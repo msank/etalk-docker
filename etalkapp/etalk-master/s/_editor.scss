@@ -1,0 +1,228 @@
+
+@mixin FIXED_CENTERED($width, $height) {
+	position: fixed;
+	width:$width;
+	height:$height;
+	left:50%;
+	top:40%;
+	margin-left:-$width/2;
+	margin-top:-$height/2;
+}
+
+/*******************************************************************************************************************************************/
+
+body {
+	&.editor { background:#333 url(/i/bg_dia.png); }
+	#page {
+		margin:200px 0 0 0;
+		background:$kColor_bg;
+		padding:0;
+	}
+}
+header#top {
+	form { margin-top:7px; }
+	>label {
+		margin:5px;
+	}
+	#pSeparator {
+		background:#c00 url(/i/drag.png) no-repeat center center;
+		float:left;
+		margin:6px;
+		width:100px;
+		height:14px;
+	}
+}
+
+/*******************************************************************************************************************************************/
+
+form {  margin:0; }
+
+select.small, input.small { font-family: Verdana, Arial; font-size: 10px; height: 18px;}
+
+form label { display:block; width:100px; float:left; text-align:right; margin:2px 10px -2px 0; white-space:nowrap; height:1em; color:#777777;}
+
+span.form_comment { font-size:0.9em; margin:3px 0.3em -0.2em 0; white-space:nowrap; height:1em; color:#333333;}
+
+td.number { text-align:right;}
+
+form table {
+	min-width:1050px;
+	td { padding:0 5px; }
+	label { width:40px; margin-right:5px; }
+	.number { width:40px; font-size:2em; font-weight:lighter; letter-spacing:-2px; color:#ccc; }
+}
+
+div.fu {
+	float:left; width:440px; height:25px;background:#F6F6F6; font-family:Lucida Grande, Verdana, sans-serif; font-size:11px;
+	.rep { float:left; display:none; }
+	.sel { float:left; display:none; }
+	div.field { width:300px; height:17px; overflow:hidden; float:left; background:#FFFFFF; margin:2px; padding-left:3px; border-left:1px solid #999999; border-top:1px solid #999999; }
+}
+div.fu_fileInfo { width:200px; text-overflow:hidden; float:left; margin:6px; }
+
+div.fu_progress { float:left; width:220px; display:none; }
+div.fu_progress img { border:0; float:left; margin:2px; }
+div.progressValue { width:100%; text-align:center; color:#666666; margin-left:20px; }
+div.progressBar { width:200px; background:#CCCCCC; height:10px; margin-left:20px; }
+div.progressLevel { background:red; height:100%; }
+
+a.btn {
+	@include button(simple, #eee);
+	position:relative;
+	&.filled {
+		@include ALPHA(50);
+		padding-left:28px;
+		&:before {
+			content:""; background:url(/i/tick.png) no-repeat center center; width:16px; height:16px; position:absolute; top:6px; left:6px;
+		}
+	}
+}
+
+#btnSave {
+	@include button(shiny, #eee);
+	float:right;
+	&.dirty {
+		@include button(shiny, #cfb);
+		-webkit-animation: pulsate 1s ease-out;
+		-webkit-animation-iteration-count: infinite;
+	}
+}
+#btnPreviewContents {
+	@include button(pill, #eee);
+}
+@mixin pGraph {
+	margin:1px 0 1px 1px; border:0; float:left; border-top:1px dotted #666; width:100%;
+}
+#previewContents {
+	position:fixed;
+	top:175px;
+	left:368px;
+	width:240px;
+	bottom:100px;
+	display:none;
+	@include linear-gradient(#eee, #fff);
+	box-shadow:1px 1px 10px rgba(0,0,0,0.3);
+	&:before {
+		@include fullTriangle(20px, top, #eee);
+		left:100px;
+	}
+	>div {
+		width:98%;
+		margin:1%;
+		height:98%;
+		overflow:auto;
+		a {
+			text-decoration:none; @include clearfix; display:block;
+			&:hover { background:#def; display:block; }
+		}
+		h2 {
+			color:#666;
+			margin:5px 0 2px 0;
+			font:{size:11px;weight:bold;};
+		}
+		p {
+			display:block; font-size:4pt; color:#999; line-height:7px; margin:0; padding:0;
+			&:after { content:" / "; color:#000; font-weight:bold; display:inline; }
+			&.paragraph {
+				&:before { content:""; float:left; height:10px; width:100%; }
+			}
+		}
+	}
+}
+
+div.section {
+	@include linear-gradient(#bbb, $kColor_bg);
+	border-top:4px dashed #00f!important;
+}
+div.paragraph {
+	@include linear-gradient(left, $kColor_bg 0%, $kColor_bg 96%, #ccc 98%, #ccc 100%);
+	border-top:2px dotted #00f!important;
+	border-bottom:2px solid $kColor_bg;
+}
+
+#tools {
+	height:55px; margin:-10px 0 0 112px; padding-top:5px; border-top:1px solid #ccc;
+	label { font:{size:9px;} }
+	>div {
+		text-align:center;
+		width:120px;
+		padding:0 15px;
+		float:left;
+		border-left:1px solid #ccc;
+		&:first-child { border:none; }
+	}
+	.separator {
+		width:100px;
+		height:14px;
+		background-image:url(/i/drag.png);
+		background-repeat:no-repeat;
+		background-position: center center;
+		margin:6px;
+		&.targetLocked {
+			width:98%;
+			left:1%;
+		}
+	}
+}
+
+#fileEdit {
+	position:fixed;
+	z-index:10;
+	@include FIXED_CENTERED(580px, 160px);
+	@include linear-gradient(#f6f6f6, #eee);
+	box-shadow:3px 3px 15px rgba(0,0,0,0.4);
+	display:none;
+	>div {
+		margin:12px;
+	}
+	>h1 {
+		margin:0;
+		padding:4px;
+		font:{size:11px;width:bold;}
+		color:#fff;
+		text-shadow:1px 1px 1px rgba(0,0,0,0.3);
+		@include linear-gradient(#555, #222);
+	}
+	.closeBox { float:right; font-size:14px; padding:1px 3px 2px 4px; margin-right:1px; color:#fff; text-decoration:none; }
+	.closeBox:hover { box-shadow:0 0 3px #999; }
+	.btn { display:block; width:40px; text-align:center; margin:10px auto 0 auto; }
+}
+.pSepTarget {
+	height:18px;
+	border-top:1px solid #ccc;
+	margin:15px 0 0 50px;
+	>* { display:none; }
+	&.continue {
+	}
+	&.section, &.paragraph {
+		position:relative;
+		>img { display:block; position:absolute; right:5px; top:3px; cursor:pointer; }
+	}
+	&.paragraph {
+		height:25px;
+		margin-left:30px;
+	}
+	&.section {
+		height:40px;
+		margin:15px 0 0 0;
+		input { display:block; width:90%; font:{size:16px; weight:bold}; color:#666; margin:5px; @include linear-gradient(#fff,$kColor_bg); }
+	}
+}
+
+@-webkit-keyframes pulsate {
+    0% {opacity: 0.8;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.8;}
+}
+
+/* jQuery UI quick enhancements */
+
+.ui-draggable {
+	cursor:move;
+	cursor:-webkit-grab;
+	cursor:-moz-grab;
+	&.ui-draggable-dragging {
+		cursor:-webkit-grabbing;
+		cursor:-moz-grabbing;
+	}
+}

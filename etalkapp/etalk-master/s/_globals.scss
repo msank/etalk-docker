@@ -1,0 +1,27 @@
+$Z_HEADER : 5;
+$Z_OVERLAY : 1;
+$Z_WAIT : 10;
+
+$kColor_bg : #f6f6f6;
+
+//  Généralités =============================================================================================================================================
+
+body {
+	font-family: Lucida Grande, Verdana, sans-serif; font-size:12px; margin:1em; background:$kColor_bg;
+}
+
+header#top {
+	position:fixed; top:0; left:0; right:0; width:100%; background:white; box-shadow:0 1px 7px #000; z-index:$Z_HEADER;
+}
+
+img { border:0;}
+figure { margin:0; }
+.label { text-align:right; white-space:nowrap; }
+
+div.input { padding:2px; margin-left:2px; margin-right:2px; font-size:11px; text-align:center; left:5px; width:120px; display:inline;}
+.hidden { display:none; }
+
+.logo {
+	padding:0 7px 0 0; border-right: 1px solid #999; margin:2px 7px; color:#fff; text-shadow:1px 1px 4px rgba(0,0,0,0.8);
+	&:first-letter { font-weight:normal; font-style:italic; }
+}

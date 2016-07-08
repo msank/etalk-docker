@@ -1,0 +1,9 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+
+RewriteRule ^api/embed.js$ /api/embed.php [L]
+
+php_flag magic_quotes_gpc Off
+
+php_flag display_errors 1

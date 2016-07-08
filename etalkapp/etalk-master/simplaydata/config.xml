@@ -1,0 +1,6 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<config>
+	<skin path="simplaydata/skins/default/"/>
+	<audiofiles path="data/"/>
+	<audiobuffersize sec="0.5"/> 
+</config>

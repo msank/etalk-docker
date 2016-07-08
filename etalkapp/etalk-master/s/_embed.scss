@@ -1,0 +1,52 @@
+$kEmbedPlayerBorder : 1px solid #bbb;
+
+.etalk-embed {
+	border:$kEmbedPlayerBorder; box-shadow:1px 1px 4px rgba(0,0,0,0.3); position:relative;
+	&>iframe { width:100%; border:0; }
+	&>legend {
+		background:#fff; border-top:$kEmbedPlayerBorder; color:#999; font-size:11px; height:30px; width:100%; padding:0; box-shadow:0 -1px 1px rgba(0,0,0,0.3);
+		@include user-select(none);
+		&>h1 { @extend .logo; font:{family:Lucida Grande, Verdana, sans-serif; size:25px}; height:26px; margin:2px 7px; width:70px; float:left; clear:none; }
+		&>p { margin:1px 0 1px 5px; padding:0; font:{family:Lucida Grande, Verdana, sans-serif; size:10px}; float:left; width:70%; }
+		&>a {
+			float:right; display:block; margin:3px 16px 0 0; width:16px; height:16px; border:0; text-decoration:none;
+			@include ALPHA(30);
+			@include SMOOTH(0.5s);
+			&:hover {
+				@include ALPHA(70);
+			}
+		}
+	}
+}
+
+// Media queries for embedding
+@media screen and (max-width: 800px) {
+	body {
+		margin:0;
+	}
+	header#top {
+		width:185px; left:auto;
+		&>nav:first-child { display:none; }
+		>#controls { margin-right:5px; }
+	}
+	#wait {
+		&>header {
+			&>h1 { font-size:24px; }
+			&>h2 { font-size:16px; }
+			&>a.vidPlay { @include PLAY_BUTTON(150px); top:90px; }
+		}
+		nav {
+			top:0; right:0; bottom:0;
+			h2 { font-size:16px; margin-bottom:20px; }
+			a { margin:10px; }
+		}
+	}
+	.viewer section>nav {
+		left:0;
+	}
+	#viz { width:35%; padding:1%; font-size:12px; }
+	#dia {
+		width:61%; left:auto; right:1%;
+	}
+	#embed>div { top:40%; }
+}

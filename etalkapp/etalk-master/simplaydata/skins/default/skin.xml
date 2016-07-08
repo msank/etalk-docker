@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<GUI>
+	<background back_pic="background.gif"/>
+	<controls>
+		<playbutton up_pic="play_up.jpg" over_pic="play_over.jpg" down_pic="play_down.jpg" x="2" y="2"/>
+		<pausebutton up_pic="pause_up.jpg" over_pic="pause_over.jpg" down_pic="pause_down.jpg" x="2" y="2"/>
+		<statusbar backcolor="DDDDDD" streamcolor="D0D0D0" poscolor="990000" x="24" y="7" w="145" h="8"/>
+		<statusanim color="D0D0D0" bands="4" band_width="4" band_spacing="1" band_height="8" x="175" y="14"/>
+	</controls>
+
+</GUI>
