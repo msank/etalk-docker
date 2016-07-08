@@ -7,7 +7,7 @@ This etalk setup is suitable for eduction purpose. It permits to use and test th
 
 1. INSTALL docker (free) for your desktop (windows, osx or linux) https://www.docker.com/products/docker#
 
-2. Download or clone this repository https://gitlab.isb-sib.ch/etalk-group/etalk-docker
+2. Download or clone this repository.
 
 3. Open a terminal in osx or linux or open the "docker quick start terminal" in Windows (that comes along with the installation).
 
