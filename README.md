@@ -9,7 +9,7 @@ This etalk setup is suitable for eduction purpose. It permits to use and test th
 
 2. Download or clone this repository.
 
-3. Open a terminal in osx or linux or open the "docker quick start terminal" in Windows (that comes along with the installation).
+3. Open a terminal in linux or open the "docker quick start terminal" in MacOSX and Windows (that comes along with the installation).
 
 4. Go Inside the directory (use `cd /path/to/directory` more info here [:link:]( https://fr.wikipedia.org/wiki/Cd_(commande)) )
 
@@ -27,10 +27,10 @@ This etalk setup is suitable for eduction purpose. It permits to use and test th
 
 7. Open a browser
 
-	On osx or linux : 
+	On linux : 
 	go to the url http://localhost:88 for the  __viewer interface__ or http://localhost:88/edit for the __edit interface__
 
-	On windows :
+	On MacOSX or Windows :
 	go to the url http://192.168.99.100:88 for the __viewer interface__ or http://192.168.99.100:88/edit for the __edit interface__
 
 
