@@ -15,7 +15,9 @@
 		$GLOBALS['browser'] = 'webkit';
 	}
 
-	$viewMode = (@$_REQUEST['dir']!='' && substr($_REQUEST['dir'], 0, 1)!='.' && $GLOBALS['browser']=='webkit');
+
+	//$viewMode = (@$_REQUEST['dir']!='' && substr($_REQUEST['dir'], 0, 1)!='.' && $GLOBALS['browser']=='webkit');
+	$viewMode = (@$_REQUEST['dir']!='' && substr($_REQUEST['dir'], 0, 1)!='.');
 	if ($viewMode) {
     	$talk = db_fetch(db_s('talks', array('dir' => $_REQUEST['dir'])));
     	define('PAGE_TITLE', 'eTalk | '.$talk['title']);
@@ -24,21 +26,32 @@
 		define('PAGE_TITLE', 'eTalk');
 	}
 
-
 	echo '<!DOCTYPE HTML><html><head><title>'.PAGE_TITLE.'</title>';
 		echo '<link rel="stylesheet" type="text/css" media="screen" href="/s/screen.css" />';
 		echo '<script type="text/javascript" src="/js/jquery.min.js"></script>';
 		echo '<script type="text/javascript" src="/js/jquery.color.min.js"></script>';
 		echo '<script type="text/javascript" src="/js/jquery.animate-shadow-min.js"></script>';
 	echo '</head><body class="viewer'.($viewMode?' paused':'').'">';
-
+	
 
     // Page Content ============================================================================================================================================
     if ($viewMode) {
-	    echo '<header id="top">';
+    	echo '<!DOCTYPE HTML><html><head><title>'.PAGE_TITLE.'</title>';
+		echo '<link rel="stylesheet" type="text/css" media="screen" href="/s/screen.css" />';
+		echo '<script type="text/javascript" src="/js/jquery.min.js"></script>';
+		echo '<script type="text/javascript" src="/js/jquery.color.min.js"></script>';
+		echo '<script type="text/javascript" src="/js/jquery.animate-shadow-min.js"></script>';
+		echo '<link rel="shortcut icon" type="image/ico" href="https://www.isb-sib.ch/templates/sib/images/favicon.ico">';
+
+
+    		echo '</head><body class="viewer'.($viewMode?' paused':'').'">';
+	      echo '<header id="top">';
 	    	if (!isset($_REQUEST['embed'])) {
 		    	echo '<nav><img src="/i/back.png" id="bBack" alt="Back" class="btn" title="Retour à l’accueil" /></nav>';
 		    }
+
+
+
 #	    	echo '<h1>'.$talk['title'].'</h1>';
 #	    	echo '<h2>'.$talk['author'].' &mdash; '.implode('.', array_reverse(explode('-', $talk['date']))).'</h2>';
 	    	echo '<nav id="controls">';
@@ -141,18 +154,20 @@
 			echo '<figcaption></figcaption>';
 		echo '</figure><div id="links"></div></div>';
 		// _____________________________________
-		echo '<audio id="player" preload="auto" src="/data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="/data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
-#		echo '<audio id="preloader" preload="auto" src="/data/'.$audioFiles[1]['snd'].'"><source src="/data/'.$audioFiles[1]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
+		
+		echo '<audio id="player" preload="auto" src="/data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="/data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';		echo '<audio id="player" preload="preload" src="/data/'.$audioFiles[0]['snd'].'" onerror="alert(\'The sound file \\\'\'+this.src+\'\\\' could not be loaded.\');" onended="endedPlay();" onloadstart="document.getElementById(\'loading\').style.display=\'inline\';" oncanplay="document.getElementById(\'loading\').style.display=\'none\';" onplay="startedPlay();"><source src="/data/'.$audioFiles[0]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
+#		echo '<audio id="preloader" preload="preload" src="/data/'.$audioFiles[1]['snd'].'"><source src="/data/'.$audioFiles[1]['snd'].'" type="audio/mp3" />HTML5 Only!</audio>';
 
 	    // Load and init etalk modules
 	    printJS('var audioFiles = ('.json_encode($audioFiles).');');
 		echo '<script type="text/javascript" src="/js/etalk.min.js"></script>';
     }
     else {
+    	/*require 'main.html';*/
     	echo '<header id="top">';
     		echo '<h1>eTalk</h1><h2>Open-source online talks</h2>';
 		echo '</header>';
-
+		
 		echo '<section>';
 		if ($GLOBALS['browser']!='webkit') {
 			echo '<div>';
@@ -162,15 +177,21 @@
 			echo '</div>';
 		}
 		else {
+			
 			echo '<nav>';
 				$talks = array('' => '(sélectionnez une conférence)');
 				$r_t = db_s('talks', array(), array('title' => 'ASC'));
 				while ($t = db_fetch($r_t)) {
+					//echo '<li class= "flex-disp-item"> <a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a></li>';
 					echo '<a href="?dir='.$t['dir'].'"><figure><div class="play"></div></figure><h2>'.$t['title'].'</h2><p>'.$t['author'].' ('.datetime('d.m.Y', $t['date']).')</p></a>';
 				}
+				
+				
 			echo '</nav>';
 		}
 		echo '</section>';
+
+
     }
 
     echo '</body></html>';
