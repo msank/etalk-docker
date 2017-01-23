@@ -3,6 +3,16 @@
 This etalk setup is suitable for eduction purpose. It permits to use and test the etalk application on the user's own plateform. It uses the docker-compose tool to set-up the application services (etalk php/apache, mysql, phpmyadmin). 
 
 
+## REQUIREMENTS
+
+- MAC : Requires Apple macOS Yosemite 10.10.3 or above
+
+- WINDOWS : Requires Microsoft Windows 10 Professional or Enterprise 64-bit
+
+- Browsers: Google Chrome; Safari (version ≥7); Internet Explorer (version 11).
+
+
+
 ## FIRST STEP : INSTALL DOCKER and Run the etalk virtual machine (VM)
 
 1. INSTALL docker (free) for your desktop (windows, osx or linux) https://www.docker.com/products/docker#
