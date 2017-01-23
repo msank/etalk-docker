@@ -1,4 +1,6 @@
-# HOW TO CREATE AN ETALK USING THE CONTAINER
+# HOW TO CREATE AN ETALK USING THE CONTAINER 
+
+_by Martial Sankar & Claire Clivaz_
 
 This etalk setup is suitable for eduction purpose. It permits to use and test the etalk application on the user's own plateform. It uses the docker-compose tool to set-up the application services (etalk php/apache, mysql, phpmyadmin). 
 
