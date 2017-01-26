@@ -1,0 +1,90 @@
+<div style="text-align: center;"></div>
+<div>
+<p align="center"><span style="font-size: large;"><strong>HOW TO CREATE AN ETALK USING THE DOCKER CONTAINER</strong></span></p>
+</div>
+<p>The following etalk guide is suitable for educational purposes. It permits for the use and testing of the etalk application on a user's own platform. This guide uses the docker-compose tool to set up the application services (etalk php/apache, mysql, phpmyadmin). These guidelines are addressed to people without specific computing knowledge.</p>
+<p><strong>Index</strong></p>
+<p><b>I. INSTALL DOCKER and run the eTalk virtual machine (VM)</b></p>
+<p><b><b>II. SECOND STEP: make your own eT</b>alk</b></p>
+<p><b>III. RUN the application next time</b></p>
+<p><b>IV. FAQ</b></p>
+<p><em>REQUIREMENTS</em></p>
+<p>MAC : Requires Apple macOS Yosemite 10.10.3 or above</p>
+<p>WINDOWS : Requires Microsoft Windows 10 Professional or Enterprise 64-bit</p>
+<p>Browsers: Google Chrome; Safari (version ≥7); Internet Explorer (version 11).<b></b></p>
+<p>*************************************************************************************************************</p>
+<div>
+<p><b>I. INSTALL DOCKER and run the eTalk virtual machine (VM)</b></p>
+<p style="text-align: center;"><em>Follow these guidelines; short videos will help you if necessary.</em></p>
+</div>
+<ol start="1" type="1">
+<li>Go to the URL: <a href="https://github.com/docker/toolbox/releases/tag/v1.12.5">https://github.com/docker/toolbox/releases/tag/v1.12.5</a></li>
+</ol>
+<p>And download the file: DockerToolbox-1.12.5.pkg</p>
+<p style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/kYe_i7cM6U4" frameborder="0" allowfullscreen=""></iframe></p>
+<ol start="2" type="1">
+<li>Start the step by step installation by double clicking the <b>.pkg</b> format . When this window appears: </li>
+</ol>
+<p><img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2017.31.42.png" width="347" height="247" /></p>
+<p>Click on the “continue” or “next” button: the installation will be finished.</p>
+<p style="text-align: center;"></p>
+<p style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/qsRlwe6zcAA" frameborder="0" allowfullscreen=""></iframe></p>
+<p>3. Then download or clone the repository <a href="https://github.com/msank/etalk-docker">https://github.com/msank/etalk-docker</a> by clicking on <img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2017.33.40.png" width="200" height="49" /> </p>
+<p>And <span style="text-decoration: underline;">save the file</span> to the <b>Desktop</b> folder by clicking on the “download zip” button : <img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2017.33.45.png" width="239" height="102" /></p>
+<p><strong>4</strong>. Copy the folder named ‘etalk-docker-master’ to the Desktop, or unzip it if necessary (double-click on the zip file ‘etalk-docker-master.zip’). It should create a folder named ‘etalk-docker-master’ on the Desktop.</p>
+<p style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/80zZIvweEPA" frameborder="0" allowfullscreen=""></iframe></p>
+<p><strong>5</strong>. If you have a Windows or MacOSX operating system, open the application named "docker quick start terminal"<img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2021.37.29.png" width="39" height="37" /> (you can find it by opening the applications menu, and then clicking on the docker application icon).</p>
+<p>If you have a Linux operating system, open a terminal <img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2021.37.41.png" width="35" height="32" />.</p>
+<p>In Windows or MacOSX, such a window, called a <span style="text-decoration: underline;">shell</span>, automatically opens. Please wait until you see this smart whale:</p>
+<p><img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2021.38.04.png" width="397" height="173" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p style="text-align: center;"></p>
+<p style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/3uXApf7i-BU" frameborder="0" allowfullscreen=""></iframe></p>
+<p><strong>6</strong>. On the command line, in the shell, go to the Desktop directory by typing or pasting the following command after the $ symbol:</p>
+<p style="text-align: center;">cd Desktop/etalk-docker-master</p>
+<p>Then execute the command by clicking on the ‘return’ or ‘enter’ key on your keyboard.</p>
+<p><strong>7</strong>. Secondly, ‘build’ the image by typing or pasting the following command (after the $):</p>
+<p style="text-align: center;">docker-compose build</p>
+<p>Then execute the command by clicking on the ‘return’ or ‘enter’ key on your keyboard and wait until it is finished.</p>
+<p><strong>8</strong>. Then, run the etalk application by pasting the following command after the $:</p>
+<p style="text-align: center;">docker-compose up -d</p>
+<p>Then execute the command by clicking on the ‘return’ or ‘enter’ key on your keyboard and wait until it is finished. It can take a few moments.</p>
+<p><strong>9</strong>. Open a browser (e.g Safari, Chrome or Internet explorer) : </p>
+<p>In Windows or Mac OSX: go to the URL <a href="http://192.168.99.100:88/">http://192.168.99.100:88</a> by typing it into the address bar and pressing ‘enter’ for the <b>viewer interface</b> or use the address <a href="http://192.168.99.100:88/edit">http://192.168.99.100:88/edit</a> for the <b>edit interface. </b></p>
+<p>In Linux: go to the URL <a href="http://localhost:88/">http://localhost:88/</a> for the <b>viewer interface</b> or <a href="http://localhost:88/edit">http://localhost:88/edit</a> for the <b>edit interface.</b></p>
+<p>Your browser window should display the following as the <span style="text-decoration: underline;">viewer interface</span>:</p>
+<p><img src="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2021.45.30.png" width="467" height="133" /></p>
+<p>And see this window for the edit<span style="text-decoration: underline;"> interface</span> : </p>
+<p><imgsrc="https://clarin.oeaw.ac.at/moodledariahteach/draftfile.php/331/user/draft/640996433/Capture%20d%E2%80%99%C3%A9cran%202017-01-12%20%C3%A0%2021.45.39.png" width="445" height="60" /></p>
+<p>*************************************************************************************************************************</p>
+<div>
+<p><b>II. SECOND STEP: MAKE YOUR OWN ETALK</b></p>
+</div>
+<p>To make your own eTalk, you can follow the “HOW-TO” eTalk <i>"Make your own eTalk"</i> by accessing the following address <a href="http://192.168.99.100:88/">http://192.168.99.100:88</a></p>
+<ol start="1" type="1">
+<li>In the “data” folder, create and name a new folder that will contain the mp3 files. You can find the “data” folder by opening the “etalk-docker-master” folder on your computer, then open the “etalkapp” folder, then the “etalk-master” folder, and then finally the “data” folder.</li>
+<li>Go to the <b>edit interface</b> <span> </span><a href="http://192.168.99.100:88/edit">http://192.168.99.100:88/edit</a>, and start editing your eTalk (page “<a href="http://etalk2.vital-it.ch/?dir=MakeETalk#0">How to do your own eTalk</a>”).</li>
+</ol>
+<p>************************************************************************************************************************</p>
+<p></p>
+<div>
+<p><b>III. RUN the application next time:</b></p>
+</div>
+<p><b>1. If you have already completed the installation (see Section I above),</b> you can simply run the etalk-docker by reopening a “quick start terminal” (to find it, go to the Applications menu, then select the docker application icon). First wait until you get the whale image (see point 5 above). Then paste the following command into the command line (after the $): </p>
+<p style="text-align: center;">cd Desktop/etalk-docker-master</p>
+<p>And click on the ‘enter’ or ‘return’ key on your keyboard.</p>
+<p>2. Then paste the following command (after the $):</p>
+<p style="text-align: center;">docker-compose start</p>
+<p>And click on the ‘enter’ or ‘return’ key on your keyboard.</p>
+<p>3. Then open a browser (e.g Safari, Chrome or Internet explorer): </p>
+<p>In Windows or Mac OSX : go to the URL <a href="http://192.168.99.100:88/">http://192.168.99.100:88</a> for the <b>viewer interface</b> or <a href="http://192.168.99.100:88/edit">http://192.168.99.100:88/edit</a> for the <b>edit interface. </b></p>
+<p>In Linux : go to the URL <a href="http://localhost:88/">http://localhost:88/</a> for the <b>viewer interface</b> or <a href="http://localhost:88/edit">http://localhost:88/edit</a> for the <b>edit interface.</b></p><p>**********************************************************************************************************</p>
+<p><b>IV. FAQ</b></p>
+<ol>
+<li><strong><i>Q: I have the following error message after typing </i>docker-compose up -d</strong></li>
+</ol>
+<p>$ docker-compose up –d <br />  Traceback (most recent call last): <br />   File "&lt;string&gt;", line 3, in &lt;module&gt; <br />   File "compose/cli/main.py", line 65, in main <br />   File "compose/cli/main.py", line 117, in perform_command <br />   File "compose/cli/main.py", line 849, in up <br />   File "compose/project.py", line 379, in up <br />   File "compose/project.py", line 177, in get_services_without_duplicate <br />   File "compose/project.py", line 165, in get_services <br />   File "compose/project.py", line 136, in get_service <br />   File "compose/project.py", line 559, in __init__</p>
+<p><i>                       <strong> What should I do ?</strong>  </i></p>
+<p> A: Check the installation and the etalk-docker-master/ folder location (It should be in the Desktop folder) and if possible redo the step by step installation (section II).</p>
+<p></p>
+<p><strong>2. <i>Q: The </i>docker-compose build<i> command is taking too much and I think it is stalled. </i><i>What should I do? </i></strong></p>
+<p>A: You should not wait more than a few minutes. If it takes too long, please don’t hesitate to restart your computer.</p>
